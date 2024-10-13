@@ -1,5 +1,6 @@
 import random as ran
 
+
 class Agent:
     def __init__(self, x, y, speed_x=1, speed_y=1, live_constant=500):
         self.x = x
@@ -8,6 +9,7 @@ class Agent:
         self.speed_y = speed_y
         self.live_constant = live_constant
         self.live = live_constant
+        self.fitness = 0
 
     def is_alive(self):
         return self.live > 0
@@ -16,13 +18,13 @@ class Agent:
         return (self.x, self.y)
 
     def get_fitness(self, environment):
-        return environment.get_distance(self)
+        return environment.radius - environment.get_distance(self)
 
-    def move(self):
+    def move(self, environment):
         self.x += self.speed_x
         self.y += self.speed_y
         self.live -= 1
-        # self.
+        self.fitness = self.get_fitness(environment)
 
     def reproduce(
         self, amount=2, mutation_rate=1, mutation_chance=1, live_constant=200
