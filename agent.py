@@ -40,7 +40,7 @@ class Agent:
                 self.speed_y + mutation_rate * (get_random() - 0.5),
                 live_constant,
             )
-        ] * amount
+        ] * int(amount)
 
     def __str__(self):
         return f"Agent at position ({self.x}, {self.y}) with speed ({self.speed_x}, {self.speed_y})"
