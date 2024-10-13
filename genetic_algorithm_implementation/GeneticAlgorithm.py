@@ -16,6 +16,7 @@ class GeneticAlgorithm:
         mutation,
         mutation_rate,
         crossover,
+        goal = None,
         generations = 10,
         initial_population_size = 10
         ):
@@ -23,11 +24,12 @@ class GeneticAlgorithm:
         self.fitness = fitness
         self.generations = generations
         self.best_performers = []
-        self.all_populations = []
+        # self.all_populations = []
         self.crossover = crossover
         self.selection = selection
         self.mutation = mutation
         self.mutation_rate = mutation_rate
+        self.goal = goal
     
     def run(self):
         best_performers = []
@@ -36,7 +38,9 @@ class GeneticAlgorithm:
             best_individual = max(self.population, key=self.fitness)
             best_fitness = self.fitness(best_individual)
             best_performers.append((best_individual, best_fitness))
-            self.all_populations.append(self.population[:])
+            if best_individual == self.goal:
+                break
+            # self.all_populations.append(self.population[:])
             self.population = self.selection(self.population, fitnesses)
             next_population = []
             for i in range(0, len(self.population) // 2):

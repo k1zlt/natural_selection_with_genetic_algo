@@ -60,11 +60,12 @@ if __name__ == "__main__":
         selection = selection,
         mutation = mutation,
         crossover = crossover,
+        goal = 2 ** 15 - 1,
         mutation_rate = 0.1,
         generations = 100,
         initial_population_size = 10
     )
     
-    for i in GenAlgo.run():
+    for index, i in enumerate(GenAlgo.run()):
         dna = get_dna(i[0])
-        print(i[0], dna, i[1], sum(dna)/len(dna))
+        print(index, i[0], dna, i[1], sum(dna)/len(dna))
