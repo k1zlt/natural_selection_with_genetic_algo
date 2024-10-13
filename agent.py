@@ -2,18 +2,23 @@ import random as ran
 
 
 class Agent:
-    def __init__(self, x, y, speed_x=1, speed_y=1):
+    def __init__(self, x, y, speed_x=1, speed_y=1, live=200):
         self.x = x
         self.y = y
         self.speed_x = speed_x
         self.speed_y = speed_y
-
+        self.live=live
+    
+    def is_alive(self):
+        return self.live > 0
+    
     def get_position(self):
         return (self.x, self.y)
 
     def move(self):
         self.x += self.speed_x
         self.y += self.speed_y
+        self.live -= 1
 
     def reproduce(self):
         return [
