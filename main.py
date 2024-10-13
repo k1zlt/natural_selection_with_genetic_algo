@@ -26,12 +26,23 @@ RED = (255, 0, 0)
 env = environment
 agents = init_agents
 running = True
+d = 1.5
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-    env.x, env.y = pygame.mouse.get_pos()
+    keys = pygame.key.get_pressed()
+
+    # Check for arrow key presses and adjust position accordingly
+    if keys[pygame.K_LEFT]:
+        env.x -= d
+    if keys[pygame.K_RIGHT]:
+        env.x += d
+    if keys[pygame.K_UP]:
+        env.y -= d
+    if keys[pygame.K_DOWN]:
+        env.y += d
 
     screen.fill(RED)
 

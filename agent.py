@@ -20,14 +20,14 @@ class Agent:
             Agent(
                 self.x,
                 self.y,
-                self.speed_x + 2 * (ran.random() - 0.5),
-                self.speed_y + 2 * (ran.random() - 0.5),
+                self.speed_x + (ran.random() - 0.5),
+                self.speed_y + (ran.random() - 0.5),
             ),
             Agent(
                 self.x,
                 self.y,
-                self.speed_x + 2 * (ran.random() - 0.5),
-                self.speed_y + 2 * (ran.random() - 0.5),
+                self.speed_x + (ran.random() - 0.5),
+                self.speed_y + (ran.random() - 0.5),
             ),
         ]
 
