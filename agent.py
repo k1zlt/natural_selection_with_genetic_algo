@@ -1,5 +1,4 @@
 import random as ran
-from environment import Environment
 
 class Agent:
     def __init__(self, x, y, speed_x=1, speed_y=1, live_constant=500):
@@ -15,15 +14,19 @@ class Agent:
 
     def get_position(self):
         return (self.x, self.y)
-    def get_fitness(self,environment: Environment):
-        ...
-        # return environment. 
+
+    def get_fitness(self, environment):
+        return environment.get_distance(self)
+
     def move(self):
         self.x += self.speed_x
         self.y += self.speed_y
         self.live -= 1
+        # self.
 
-    def reproduce(self, amount=2, mutation_rate=1, mutation_chance=1, live_constant=200):
+    def reproduce(
+        self, amount=2, mutation_rate=1, mutation_chance=1, live_constant=200
+    ):
         get_random = lambda: 0
         if ran.random() < mutation_chance:
             get_random = lambda: ran.random()
