@@ -50,7 +50,7 @@ while running:
     pygame.draw.circle(screen, WHITE, (env.x, env.y), env.radius)
     agents = update(environment=env, agents=agents)
     for i in agents:
-        pygame.draw.circle(screen, BLACK, (i.x, i.y), 3)
+        pygame.draw.circle(screen, (0, 0, 0, int(i.live / i.live_constant)*255), (i.x, i.y), 3)
 
     pygame.display.flip()
 
