@@ -1,6 +1,8 @@
 import pygame
 import sys
 from agent import Agent
+from environment import Environment
+import random
 
 pygame.init()
 
@@ -13,16 +15,17 @@ clock = pygame.time.Clock()
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+RED = (255, 0, 0)
 
-env = Environment(radius=10, center_x=screen_width//2, center_y=screen_height//2)
+env = Environment(radius=200, x=screen_width//2, y=screen_height//2)
 
 agents = []
 num_agents = 5
 
 for _ in range(num_agents):
     while True:
-        x = random.uniform(-env.radius, env.radius)
-        y = random.uniform(-env.radius, env.radius)
+        x = random.uniform(env.x-env.radius, env.x+env.radius)
+        y = random.uniform(env.y-env.radius, env.y+env.radius)
         if env.is_inside_circle(x, y):
             break
     speed_x = random.uniform(0.5, 2)
@@ -40,7 +43,14 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
-    screen.fill(WHITE)
+    screen.fill(RED)
+    
+    # Drawing
+    pygame.draw.circle(screen, WHITE, (env.x, env.y), env.radius)
+    
+    for i in agents:
+        pygame.draw.circle(screen, BLACK, (i.x, i.y), 1)
+
 
     pygame.display.flip()
 
