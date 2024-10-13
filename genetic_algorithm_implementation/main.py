@@ -6,7 +6,7 @@ def get_dna(specimen):
     while specimen > 0:
         v.append(specimen % 2)
         specimen //= 2
-    while len(v) < 5:
+    while len(v) < 15:
         v.append(0)
     return v[::-1]
 
@@ -60,10 +60,11 @@ if __name__ == "__main__":
         selection = selection,
         mutation = mutation,
         crossover = crossover,
-        mutation_rate = 0.01,
+        mutation_rate = 0.1,
         generations = 100,
         initial_population_size = 10
     )
     
     for i in GenAlgo.run():
-        print(i[0], get_dna(i[0]), i[1])
+        dna = get_dna(i[0])
+        print(i[0], dna, i[1], sum(dna)/len(dna))
