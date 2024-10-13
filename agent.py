@@ -1,5 +1,5 @@
 import random as ran
-
+from environment import Environment
 
 class Agent:
     def __init__(self, x, y, speed_x=1, speed_y=1, live_constant=500):
@@ -15,7 +15,9 @@ class Agent:
 
     def get_position(self):
         return (self.x, self.y)
-
+    def get_fitness(self,environment: Environment):
+        ...
+        # return environment. 
     def move(self):
         self.x += self.speed_x
         self.y += self.speed_y

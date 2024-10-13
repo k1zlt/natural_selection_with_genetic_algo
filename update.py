@@ -27,9 +27,7 @@ def update(
         del agents[i]
     new_agents = []
     for agent in agents:
-
         if random.random() < reproduction_chance and len(agents) <= limit:
-
             new_agents = [
                 *new_agents,
                 *agent.reproduce(

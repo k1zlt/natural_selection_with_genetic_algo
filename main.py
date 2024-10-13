@@ -26,23 +26,25 @@ RED = (255, 0, 0)
 env = environment
 agents = init_agents
 running = True
-d = 1.5
+d = 3
+
 while running:
+    x = 0
+    y = 0
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
     keys = pygame.key.get_pressed()
-
     # Check for arrow key presses and adjust position accordingly
     if keys[pygame.K_LEFT]:
-        env.x -= d
+        x -= d
     if keys[pygame.K_RIGHT]:
-        env.x += d
+        x += d
     if keys[pygame.K_UP]:
-        env.y -= d
+        y -= d
     if keys[pygame.K_DOWN]:
-        env.y += d
+        y += d
 
     screen.fill(RED)
 
@@ -50,8 +52,9 @@ while running:
     pygame.draw.circle(screen, WHITE, (env.x, env.y), env.radius)
     agents = update(environment=env, agents=agents)
     for i in agents:
-        pygame.draw.circle(screen, (0, 0, 0, int(i.live / i.live_constant)*255), (i.x, i.y), 3)
-
+        i.x -= x
+        i.y -= y
+        pygame.draw.circle(screen, BLACK, (i.x, i.y), 3)
     pygame.display.flip()
 
     clock.tick(60)
