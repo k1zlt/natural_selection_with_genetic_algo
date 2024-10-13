@@ -29,21 +29,21 @@ def main():
     for agent in agents:
         print(agent)
 
-    # Simulate movement for a few steps
-    num_steps = 5
-    for step in range(num_steps):
-        print(f"\nStep {step + 1}:")
-        for agent in agents:
-            # Generate random movement
-            dx = random.uniform(-1, 1)
-            dy = random.uniform(-1, 1)
-            agent.move(dx, dy)
-            # Check if the agent is still inside the circle
-            if not env.is_inside_circle(*agent.get_position()):
-                # If outside, remove the agent
-                agents.remove(agent)
-            else:
-                print(agent)
+    # # Simulate movement for a few steps
+    # num_steps = 5
+    # for step in range(num_steps):
+    #     print(f"\nStep {step + 1}:")
+    #     for agent in agents:
+    #         # Generate random movement
+    #         dx = random.uniform(-1, 1)
+    #         dy = random.uniform(-1, 1)
+    #         agent.move(dx, dy)
+    #         # Check if the agent is still inside the circle
+    #         if not env.is_inside_circle(*agent.get_position()):
+    #             # If outside, remove the agent
+    #             agents.remove(agent)
+    #         else:
+    #             print(agent)
 
 
 if __name__ == "__main__":
