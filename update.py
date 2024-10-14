@@ -1,11 +1,11 @@
-from initialization import environment, agents
+from initialization import environment, get_agents
 from agent import Agent
 import random
 
 
 def update(
     environment=environment,
-    agents: list[Agent] = agents,
+    agents: list[Agent] = get_agents(),
     reproduction_chance=0.01,
     live_constant=500,
     mutation_rate=1,

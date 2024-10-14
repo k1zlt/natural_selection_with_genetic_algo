@@ -4,7 +4,7 @@ import sys
 # from agent import Agent
 # from environment import Environment
 from initialization import environment
-from initialization import agents as init_agents
+from initialization import get_agents
 from sliders import get_sliders
 from update import update
 
@@ -25,7 +25,7 @@ GRAY = (100, 100, 100)
 GREEN = (0, 255, 0)
 
 env = environment
-agents = init_agents
+agents = get_agents()
 running = True
 d = 3
 sliders= get_sliders()
@@ -49,6 +49,8 @@ while running:
         y -= d
     if keys[pygame.K_DOWN]:
         y += d
+    if keys[pygame.K_SPACE]:
+        agents = get_agents()
 
     screen.fill(RED)
     for slider in sliders:
