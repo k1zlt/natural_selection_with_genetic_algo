@@ -1,12 +1,3 @@
-# 1. Initialization: Create a random population of chromosomes.
-# 2. Fitness Evaluation: Evaluate the fitness of each chromosome.
-# 3. Selection: Select parent chromosomes based on fitness.
-# 4. Crossover: Recombine parents to produce offspring.
-# 5. Mutation: Apply random mutations to some offspring.
-# 6. Replacement: Form a new population with the offspring.
-# 7. Termination: Repeat until a stopping condition is met.
-# 8. Result: Return the best solution found.
-
 class GeneticAlgorithm:
     def __init__(
         self, 
@@ -24,7 +15,6 @@ class GeneticAlgorithm:
         self.fitness = fitness
         self.generations = generations
         self.best_performers = []
-        # self.all_populations = []
         self.crossover = crossover
         self.selection = selection
         self.mutation = mutation
@@ -40,7 +30,6 @@ class GeneticAlgorithm:
             best_performers.append((best_individual, best_fitness))
             if best_individual == self.goal:
                 break
-            # self.all_populations.append(self.population[:])
             self.population = self.selection(self.population, fitnesses)
             next_population = []
             for i in range(0, len(self.population) // 2):
@@ -52,5 +41,3 @@ class GeneticAlgorithm:
             next_population.append(best_individual)
             self.population = next_population
         return best_performers
-            
-                        

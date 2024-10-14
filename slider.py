@@ -22,7 +22,7 @@ class Slider:
         self.min_val = min_val
         self.max_val = max_val
         self.current_val = current_val
-        self.pos = x  # Position of the slider handle
+        self.pos = (self.current_val - self.min_val) / (self.max_val - self.min_val) * self.width + self.x  # Position of the slider handle
         self.radius = radius
         self.dragging = False
         self.title = title

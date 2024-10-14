@@ -68,4 +68,5 @@ if __name__ == "__main__":
     
     for index, i in enumerate(GenAlgo.run()):
         dna = get_dna(i[0])
-        print(index, i[0], dna, i[1], sum(dna)/len(dna))
+        # print(index, i[0], dna, i[1], round(sum(dna)/len(dna), 3))
+        print(f"Generation: {index} | Specimen: {i[0]} - {''.join(map(str, dna))} | {round(sum(dna)/len(dna), 3)}")
